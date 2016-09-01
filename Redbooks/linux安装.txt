@@ -100,10 +100,21 @@ hostnamectl set-hostname <主机名>  修改主机名
 shutdown -h now  立刻关机
 ps -ef |grep 
 /etc/init.d/mysql start 脚本启动mysql
-sync; echo 3 > /proc/sys/vm/drop_caches  释放网页缓存，目录项和索引（To free pagecache, dentries and inodes）:
+sync; echo 3 > /proc/sys/vm/drop_caches  释放网页缓存，目录项和索引（To free pagecache, dentries and inodes）
+
+14.字体添加
+首先在/usr/share/fonts目录下新建一个目录chinese，上传字体
+chmod -R 755 /usr/share/fonts/chinese
+yum -y install ttmkfdir
+ttmkfdir -e /usr/share/X11/fonts/encodings/encodings.dir    安装ttmkfdir来搜索目录中所有的字体信息，并汇总生成fonts.scale文件
+vi /etc/fonts/fonts.conf
+在<!-- Font directory List --> 中添加 <dir>/usr/share/fonts/chinese</dir> 保存
+fc-cache
+fc-list  查看字体列表
 
 
-14.windows git 使用及注意事项
+
+15.windows git 使用及注意事项
 git config --global core.autocrlf false
 git config --global core.safecrlf true
 1.git init
@@ -122,4 +133,3 @@ git config --global core.safecrlf true
 12.git remote add origin git@github.com:aboutxyz/t66y.git
 git push -u origin master
 后面用git push origin master
-13.git clone git@github.com:michaelliao/gitskills.git
