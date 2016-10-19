@@ -133,3 +133,5 @@ git config --global core.safecrlf true
 12.git remote add origin git@github.com:aboutxyz/t66y.git
 git push -u origin master
 后面用git push origin master
+接触关联是git remote remove origin
+拉取分支git fetch origin master
